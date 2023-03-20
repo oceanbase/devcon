@@ -46,3 +46,6 @@ select art_name from prize where type='三等奖' \G;
 
 # 红色展示
 # echo -n -e '\e[31m' ; echo select name from lottery.prize | obclient -N -h127.0.0.1 -P55800 -uroot -Doceanbase -A ; echo -n -e '\e[0m'
+
+# 导入抽奖候选人
+load data infile '/tmp/candidate.txt' into table candidate(name, id);
