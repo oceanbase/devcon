@@ -25,13 +25,13 @@ begin
 
         # 临时表用来记录之前抽中的同学，以便于本次抽奖展示时排除
         drop table if exists lucky_pups;
-        create temporary table lucky_pups select name from candidate where candidate.prize_id = @prize_id;
+        create temporary table lucky_pups select id from candidate where candidate.prize_id = @prize_id;
          
         # 抽一次
         UPDATE candidate set prize_id=@prize_id where prize_id is null order by rand() limit draw_count;
 
         # 展示本次抽中的同学
-        select name '获奖姓名' from candidate where prize_id=@prize_id and name not in (select name from lucky_pups);
+        select name, id from candidate where prize_id=@prize_id and id not in (select id from lucky_pups);
 
         drop table if exists lucky_pups;
       end if;
@@ -48,7 +48,7 @@ delimiter //
 # 展示所有中奖的同学
 create procedure list_all_lucky_pups()
 begin
-  select candidate.name as name, prize.type as type, prize.name as prize from candidate, prize 
+  select candidate.name as name, candidate.id as id, prize.type as type, prize.name as prize from candidate, prize 
       where candidate.prize_id=prize.id order by prize.level, prize.name, candidate.name asc;
 end //
 
@@ -62,7 +62,8 @@ begin
   select 0 into @i;
   while @i < num do
     set @i = @i+1;
-    insert into candidate(name) values(CONCAT('abc', CONVERT(@i, CHAR)));
+    select CONCAT('abc', CONVERT(@i, CHAR)) into @str;
+    insert into candidate(id, name) values(@str, @str);
   end while ;
 end //
 

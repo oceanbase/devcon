@@ -17,8 +17,8 @@ CREATE UNIQUE INDEX prize_index_name ON prize(`name`);
 
 # 抽奖候选人
 CREATE TABLE `candidate` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL COMMENT '姓名',
+  `id` varchar(60) NOT NULL,
+  `name` varchar(60) NOT NULL COMMENT '姓名',
   `prize_id` bigint unsigned COMMENT '获奖',
   PRIMARY KEY (`id`)
 );
@@ -38,7 +38,7 @@ source prizes/charger.sql;
 SELECT COUNT(1) from candidate;
 
 # 查看候选人列表
-SELECT name from candidate;
+SELECT name, id from candidate;
 
 # 展示三等奖奖品
 SELECT name from prize where type='三等奖' \G;
@@ -46,3 +46,6 @@ select art_name from prize where type='三等奖' \G;
 
 # 红色展示
 # echo -n -e '\e[31m' ; echo select name from lottery.prize | obclient -N -h127.0.0.1 -P55800 -uroot -Doceanbase -A ; echo -n -e '\e[0m'
+
+# 导入抽奖候选人
+load data infile '/tmp/candidate.txt' into table candidate(name, id);
