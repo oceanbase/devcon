@@ -19,12 +19,15 @@ begin
         select CONCAT("Prize is not enough. There are ", CONVERT(@prize_total_count - @drawed_count, CHAR), " left, but you want ", CONVERT(draw_count, CHAR)) AS ERROR;
       else
         # 抽奖
+        
+        # 先拿出来prize id
         select id into @prize_id from prize where prize.name=prize_name;
 
-        # 临时表用来记录之前抽中的同学
+        # 临时表用来记录之前抽中的同学，以便于本次抽奖展示时排除
         drop table if exists lucky_pups;
         create temporary table lucky_pups select name from candidate where candidate.prize_id = @prize_id;
          
+        # 抽一次
         UPDATE candidate set prize_id=@prize_id where prize_id is null order by rand() limit draw_count;
 
         # 展示本次抽中的同学
