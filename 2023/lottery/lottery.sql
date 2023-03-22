@@ -49,7 +49,7 @@ select art_name from prize where type='三等奖' \G;
 
 # 导入抽奖候选人
 load data infile '/tmp/candidate.txt' into table candidate(name, id);
-load data infile '/tmp/candidate.txt' ignore into table candidate(name, id);
+# load data infile '/tmp/candidate.txt' ignore into table candidate(name, id);
 load data infile '/tmp/candidate.txt' into table candidate fields terminated by '\t' (name, id);
-load data infile '/tmp/candidate.txt' ignore into table candidate fields terminated by '\t' (name, id);
+# load data infile '/tmp/candidate.txt' ignore into table candidate fields terminated by '\t' (name, id);
 
