@@ -18,7 +18,7 @@ obd cluster tenant create demo
 
 ## 安装 OB-Sysbench 并执行测试
 ```bash
-yum install -y ob-sysbench-1.0.20-11.el7.x86_64.rpm	
+sudo yum install -y ob-sysbench-1.0.20-11.el7.x86_64.rpm	
 obd test sysbench demo
 ```
 
@@ -32,12 +32,12 @@ obd cluster destroy demo
 
 ## 启动 OceanBase 容器
 ```bash
-docker run --name obstandalone -p 2881:2881 -d oceanbase/oceanbase-ce 
+sudo docker run --name obstandalone -p 2881:2881 -d oceanbase/oceanbase-ce 
 ```
 
 ## 查看启动进度
 ```bash
-docker logs obstandalone -f
+sudo docker logs obstandalone -f
 ```
 
 ## 连接到 OceanBase 数据库
@@ -45,12 +45,12 @@ docker logs obstandalone -f
 # 使用obclient连接
 obclient -uroot@sys -h127.1 -P2881 
 # 使用镜像自带连接脚本
-docker exec -it obstandalone ob-mysql sys
+sudo docker exec -it obstandalone ob-mysql sys
 ```
 
 ## 销毁 OceanBase 容器
 ```bash
-docker rm -f obstandalone
+sudo docker rm -f obstandalone
 ```
 
 # 在 K8s 上部署 OceanBase 数据库
