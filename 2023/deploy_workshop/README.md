@@ -84,7 +84,7 @@ kubectl apply -f tenant.yaml
 ## 连接到 OceanBase 数据库
 ```bash
 kubectl get svc -n ocluster
-obclient -h<ip> -P2881 -A -c -Doceanbase
+obclient -h<ip> -uroot@sys -P2881 -A -c -Doceanbase
 ```
 
 ## 部署生态监控组件
