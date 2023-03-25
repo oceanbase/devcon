@@ -98,3 +98,7 @@ kubectl apply -f grafana/
 kubectl apply -f sysbench/prepare.yaml
 kubectl apply -f sysbench/run.yaml
 ```
+
+# 应用开发体验
+不需要准备服务器，直接访问 https://gitpod.io/#https://github.com/oceanbase/ob-example 
+等待 2 分钟，自动部署一个集群，可以在上面进行应用开发
