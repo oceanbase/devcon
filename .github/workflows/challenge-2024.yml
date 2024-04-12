@@ -41,11 +41,11 @@ jobs:
       - name: Build with yarn
         run: |
           yarn build
-        working-directory: devcon/2024/challenge
+        working-directory: 2024/challenge
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: devcon/2024/challenge/dist
+          path: 2024/challenge/dist
 
   # Deployment job
   deploy:
