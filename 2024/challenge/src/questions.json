@@ -1,27 +1,132 @@
 {
-  "data": [
+  "questionsData": [
     {
       "id": "1",
-      "title": "What is the capital of France?",
+      "title": "哪一项不是 OceanBase 4.x 社区版的能力？",
       "type": "SingleChoice",
       "answers": [
         {
-          "content": "Paris",
+          "content": "高兼容，兼容 MySQL 语法功能和协议，底层实现依赖 MySQL。",
           "isCorrect": true
         },
         {
-          "content": "London"
+          "content": "多租户能力，一套集群管理多个数据库实例，运维成本低。"
         },
         {
-          "content": "Berlin"
+          "content": "高可用能力，少数派副本故障能够自动恢复。"
         },
         {
-          "content": "Madrid"
+          "content": "水平扩展能力，扩缩容过程中对业务透明。"
         }
       ]
     },
     {
       "id": "2",
+      "title": "OceanBase 中通过在多个副本之间同步 redo 日志的方式实现副本之间的数据一致性，当 leader 副本所在节点收到所有 follower 副本所在节点返回的 redo 日志落盘成功的消息之后，才会认为写操作执行成功，这时候会向用户返回 dml 执行成功的响应。",
+      "type": "SingleChoice",
+      "answers": [
+        {
+          "content": "正确"
+        },
+        {
+          "content": "错误",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "以下对 OceanBase 数据库代理 ODP（obproxy）的描述正确的是",
+      "type": "MultipleChoice",
+      "answers": [
+        {
+          "content": "ODP 是一个反向代理，会将应用的请求路由给最合适的 observer 节点",
+          "isCorrect": true
+        },
+        {
+          "content": "ODP 是一个 “无状态” 的服务进程，即不做数据持久化",
+          "isCorrect": true
+        },
+        {
+          "content": "ODP 必须部署到一台独立的服务器上，以保证其性能要求"
+        },
+        {
+          "content": "ODP 会接收用户的 SQL，并利用自身的 SQL 执行模块去处理 SQL 的计算任务"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "有一个 OceanBase 租户包含 3 个 zone，每个 zone 有 5 台 observer。在这个租户里创建 1 张表，在这张表上创建 10 个分区。请问这张表上的每个分区最多有几份全功能副本？",
+      "type": "SingleChoice",
+      "answers": [
+        {
+          "content": "15"
+        },
+        {
+          "content": "10"
+        },
+        {
+          "content": "5"
+        },
+        {
+          "content": "3",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "有一个 OceanBase 集群包含 5 个 zone，每个 zone 里有 2 台 observer。用户在这个集群中创建 1 个租户，在这个租户里创建 1 张表，在这张表上创建 4 个分区。只读副本不可作为 Paxos 组的成员，请问这张表上的其中一个分区可能会有几份全功能副本？",
+      "type": "MultipleChoice",
+      "answers": [
+        {
+          "content": "1",
+          "isCorrect": true
+        },
+        {
+          "content": "2",
+          "isCorrect": true
+        },
+        {
+          "content": "3",
+          "isCorrect": true
+        },
+        {
+          "content": "4",
+          "isCorrect": true
+        },
+        {
+          "content": "5",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "以下哪几项属于 OceanBase 社区版适合的业务场景？",
+      "type": "MultipleChoice",
+      "answers": [
+        {
+          "content": "MySQL 实例规模大的场景。",
+          "isCorrect": true
+        },
+        {
+          "content": "MySQL 数据量大、存储成本高的场景。",
+          "isCorrect": true
+        },
+        {
+          "content": "业务量增长快或者变化大的场景。",
+          "isCorrect": true
+        },
+        {
+          "content": "交易数据库上的复杂查询场景。",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "7",
       "title": "以下哪几项属于 OceanBase 4.x 社区版能够支持的功能？",
       "type": "MultipleChoice",
       "answers": [
@@ -40,6 +145,163 @@
           "content": "高级压缩功能。",
           "isCorrect": true
         }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "OBD 和 OCP 都是可以用来部署集群的工具，对于在生产环境中部署 OceanBase 集群，二者没什么区别，任选其一即可。",
+      "type": "SingleChoice",
+      "answers": [
+        {
+          "content": "正确"
+        },
+        {
+          "content": "错误",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "以下哪些是 OceanBase 代码开源的内容？",
+      "type": "MultipleChoice",
+      "answers": [
+        {
+          "content": "数据库内核 observer 的代码。",
+          "isCorrect": true
+        },
+        {
+          "content": "反向代理 ODP（obproxy）的代码。",
+          "isCorrect": true
+        },
+        {
+          "content": "图形化开发工具 ODC 的代码。",
+          "isCorrect": true
+        },
+        {
+          "content": "语言驱动 ob-connector-odbc 的代码。",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "以下哪个 OceanBase 生态工具提供与同构/异构的数据库之间进行在线数据迁移，以及和各种消息中间件进行实时的数据同步等功能？",
+      "type": "SingleChoice",
+      "answers": [
+        {
+          "content": "OMS",
+          "isCorrect": true
+        },
+        {
+          "content": "OBD"
+        },
+        {
+          "content": "OCP"
+        },
+        {
+          "content": "ODC"
+        }
+      ]
+    },
+    {
+      "id":"11",
+      "title": "OceanBase创建租户的资源分配的流程是？",
+      "type": "SingleChoice",
+      "answers": [
+        {"content":"创建资源池->创建资源单元->系统在observer上分配资源->创建租户"},
+        {"content":"创建资源单元->系统在observer上分配资源->创建资源池->创建租户"},
+        {"content":"创建资源单元->创建资源池->系统在observer上分配资源->创建租户","isCorrect":true},
+        {"content":"系统在observer上分配资源->创建资源池->创建资源单元->创建租户"}
+      ]
+    },
+    {
+      "id":"12",
+      "title": "部署完 OceanBase 环境后，已经有sys租户了，不用麻烦新建一个租户，可以使用sys租户给业务使用。",
+      "type": "SingleChoice",
+      "answers": [
+        {"content":"正确"},
+        {"content":"错误","isCorrect":true}
+      ]
+    },
+    {
+      "id":"13",
+      "title": "OceanBase 4.x 集群需要保证所有节点的时钟偏差在 100ms 以内。",
+      "type": "SingleChoice",
+      "answers": [
+        {"content":"正确"},
+        {"content":"错误","isCorrect":true}
+      ]
+    },
+    {
+      "id":"14",
+      "title": "以下哪个租户变量是在租户创建后不允许修改的",
+      "type": "SingleChoice",
+      "answers": [
+        {"content":"ob_query_timeout"},
+        {"content":"autocommit"},
+        {"content":"sql_mode"},
+        {"content":"lower_case_table_names","isCorrect":true}
+      ]
+    },
+    {
+      "id":"15",
+      "title": "生产环境安装部署 OceanBase 集群时，以下哪些步骤是必须要提前准备的",
+      "type":"MultipleChoice",
+      "answers":[
+        {"content":"配置ssh互信"},
+        {"content":"修改用户资源限制","isCorrect":true},
+        {"content":"修改内核参数","isCorrect":true},
+        {"content":"配置时钟源","isCorrect":true}
+      ]
+    },
+    {
+      "id":"16",
+      "title": "下列哪两个业务，适合将租户级别的变量 ob_read_consistency 设置成'weak'？",
+      "type":"MultipleChoice",
+      "answers":[
+        {"content":"转账系统"},
+        {"content":"历史库系统","isCorrect":true},
+        {"content":"支付交易系统"},
+        {"content":"数仓查询系统","isCorrect":true}
+      ]
+    },
+    {
+      "id":"17",
+      "title": "OceanBase 的参数有哪两个级别",
+      "type":"MultipleChoice",
+      "answers":[
+        {"content":"zone"},
+        {"content":"cluster","isCorrect":true},
+        {"content":"server"},
+        {"content":"tenant","isCorrect":true}
+      ]
+    },
+    {
+      "id":"18",
+      "title": "租户的 session 变量只会在当前session生效，不影响该租户下的其他session。",
+      "type":"SingleChoice",
+      "answers":[
+        {"content":"正确","isCorrect":true},
+        {"content":"错误"}
+      ]
+    },
+    {
+      "id":"19",
+      "title": "OceanBase 是一款分布式关系型数据库，创建租户后主副本只能打散到所有Zone内，不能聚焦到一个Zone内。",
+      "type":"SingleChoice",
+      "answers":[
+        {"content":"正确"},
+        {"content":"错误","isCorrect":true}
+      ]
+    },
+    {
+      "id":"20",
+      "title": "OCP 部署 OceanBase 集群的时候只能使用 admin 用户。",
+      "type":"SingleChoice",
+      "answers":[
+        {"content":"正确"},
+        {"content":"错误","isCorrect":true}
       ]
     }
   ]
