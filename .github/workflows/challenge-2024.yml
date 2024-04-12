@@ -32,10 +32,6 @@ jobs:
       MDBOOK_VERSION: 0.4.36
     steps:
       - uses: actions/checkout@v4
-      - name: Prepare
-        run: |
-          mkdir mdbook
-          mv docs mdbook/src
 
       - name: Install node and yarn
         run: |
