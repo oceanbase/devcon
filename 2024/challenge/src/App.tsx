@@ -56,6 +56,9 @@ function App() {
        {!submitted && (<Form form={form} layout={'vertical'} size={'large'}>
           {questions.map((q, idx) =>
             <div style={{padding:30}} className="box" key={q.id}>
+              {
+                 <div style={{marginBottom: 16}}><b>{`${idx + 1}. ${q.title}`}</b></div>
+              }
               <Form.Item
                 name={q.id}
                 rules={[{ required: true, message: '请回答该问题' }]}
