@@ -1,7 +1,7 @@
 import 'bulma/css/bulma.css'
-import { Form, Checkbox, Radio, Space, Typography, Button, message } from 'antd'
+import { Form, Checkbox, Radio, Space, Typography, Button, Input } from 'antd'
 import React from 'react'
-import data from './questions.json'
+import questionsData from './questions.json'
 
 enum QuestionType {
   MultipleChoice = 'MultipleChoice',
@@ -21,7 +21,7 @@ type Question = {
   answers: QuestionAnswer[]
 }
 
-const questions: Question[] = data.data
+const questions: Question[] = questionsData.questionsData
 
 const correctMapping: Record<string, string[]> = Object.fromEntries(questions.map((q) => [q.id, q.answers.filter((a) => a.isCorrect).map((a) => a.content)]))
 const questionMapping: Record<string, Question> = Object.fromEntries(questions.map((q) => [q.id, q]))
@@ -30,6 +30,9 @@ const questionMapping: Record<string, Question> = Object.fromEntries(questions.m
 function App() {
   const [form] = Form.useForm()
   const [wrongAnswers, setWrongAnswers] = React.useState<string[]>([])
+  const [score, setScore] = React.useState<number>(-1)
+  const [submitted, setSubmitted] = React.useState<boolean>(false)
+  // const [githubId, setGithubId] = React.useState<string>("")
   for (const q of questions) {
     q.answers = q.answers.sort(() => Math.random() - 0.5)
   }
@@ -37,24 +40,27 @@ function App() {
     <>
       <section className="hero is-info">
         <div className="hero-body">
-          <p className="title" style={{ marginBottom: 8 }}>OceanBase Quiz</p>
-          <p className="subtitle">请选择你认为正确的答案，完成答题后点击【提交】按钮</p>
+          <p className="title" style={{ marginBottom: 8 }}>OceanBase 知识挑战</p>
+          <p className="subtitle">请选择你认为正确的答案，完成答题后点击【提交】</p>
         </div>
 
       </section>
 
       <div style={{
         margin: 'auto',
-        padding: '100px',
+        paddingTop: '60px',
+        paddingBottom: '60px',
+        paddingLeft: '2%',
+        paddingRight: '2%',
       }}>
-        <Form form={form} layout={'vertical'} size={'large'}>
+       {!submitted && (<Form form={form} layout={'vertical'} size={'large'}>
           {questions.map((q, idx) =>
-            <div className="box" key={q.id}>
+            <div style={{padding:30}} className="box" key={q.id}>
               <Form.Item
                 name={q.id}
-                label={<Typography.Title level={4}>{`${idx + 1}. ${q.title}`}</Typography.Title>}
                 rules={[{ required: true, message: '请回答该问题' }]}
               >
+                <div style={{marginBottom: 16}}>{`${idx + 1}. ${q.title}`}</div>
                 {
                   q.type === QuestionType.SingleChoice ?
                     (<Radio.Group>
@@ -72,7 +78,10 @@ function App() {
             </div>
           )}
         </Form>
+       )}
+        { !submitted && (
         <Space style={{ marginTop: 64 }}>
+          <Input placeholder="请输入你的github id" style={{ width: 200 }} />
           <Button type="primary" onClick={async () => {
             const values = await form.validateFields()
             let score = 0
@@ -81,23 +90,32 @@ function App() {
               const correct = correctMapping[id]
               if (typeof answers === 'string') {
                 if (correct.includes(answers)) {
-                  score++
+                  score += 5
                 } else {
                   wrongAnswers.push(id)
                 }
               } else if (Array.isArray(answers)) {
                 if (correct.every((c) => answers.includes(c)) && correct.length === answers.length) {
-                  score++
+                  score += 5
                 } else {
                   wrongAnswers.push(id)
                 }
               }
             }
             setWrongAnswers(wrongAnswers)
+            // setWrongAnswers([])
+            setScore(score)
+            setSubmitted(true)
             console.log("score", score)
-            message.info(`你的得分是 ${score}`)
+            // message.info(`你的得分是 ${score}`)
           }}>提交</Button>
         </Space>
+        )}
+        {score >= 0 && (
+          <div style={{ marginTop: 32 }}>
+            <Typography.Title level={4}>您的得分是{score}</Typography.Title>
+          </div>
+        )}
         {wrongAnswers.length > 0 && (
           <div style={{ marginTop: 32 }}>
             <Typography.Title level={4}>错误题目</Typography.Title>
