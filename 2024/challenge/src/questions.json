@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "title": "What is the capital of France?",
+      "type": "SingleChoice",
+      "answers": [
+        {
+          "content": "Paris",
+          "isCorrect": true
+        },
+        {
+          "content": "London"
+        },
+        {
+          "content": "Berlin"
+        },
+        {
+          "content": "Madrid"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "以下哪几项属于 OceanBase 4.x 社区版能够支持的功能？",
+      "type": "MultipleChoice",
+      "answers": [
+        {
+          "content": "创建和 Oracle 语法兼容的 Oracle 模式租户。"
+        },
+        {
+          "content": "下载并使用与社区版配套的图形化开发及管控工具。",
+          "isCorrect": true
+        },
+        {
+          "content": "备份恢复功能。",
+          "isCorrect": true
+        },
+        {
+          "content": "高级压缩功能。",
+          "isCorrect": true
+        }
+      ]
+    }
+  ]
+}
