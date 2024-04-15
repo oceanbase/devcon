@@ -63,7 +63,6 @@ function App() {
                 name={q.id}
                 rules={[{ required: true, message: '请回答该问题' }]}
               >
-                <div style={{marginBottom: 16}}>{`${idx + 1}. ${q.title}`}</div>
                 {
                   q.type === QuestionType.SingleChoice ?
                     (<Radio.Group>
