@@ -29,10 +29,11 @@ const questionMapping: Record<string, Question> = Object.fromEntries(questions.m
 
 function App() {
   const [form] = Form.useForm()
+  const [formGithubId] = Form.useForm()
   const [wrongAnswers, setWrongAnswers] = React.useState<string[]>([])
   const [score, setScore] = React.useState<number>(-1)
   const [submitted, setSubmitted] = React.useState<boolean>(false)
-  // const [githubId, setGithubId] = React.useState<string>("")
+  const [githubId, setGithubId] = React.useState<string>("")
   for (const q of questions) {
     q.answers = q.answers.sort(() => Math.random() - 0.5)
   }
@@ -55,14 +56,17 @@ function App() {
       }}>
        {!submitted && (<Form form={form} layout={'vertical'} size={'large'}>
           {questions.map((q, idx) =>
-            <div style={{padding:30}} className="box" key={q.id}>
+          
+            <div style={{padding:25}} className="box" key={q.id}>
               {
+                  //(<Typography.Text strong style={{paddingBottom:16}}>{`${idx + 1}. ${q.title}`}</Typography.Text>)
                  <div style={{marginBottom: 16}}><b>{`${idx + 1}. ${q.title}`}</b></div>
-              }
+                }
               <Form.Item
                 name={q.id}
                 rules={[{ required: true, message: '请回答该问题' }]}
               >
+                
                 {
                   q.type === QuestionType.SingleChoice ?
                     (<Radio.Group>
@@ -81,10 +85,21 @@ function App() {
           )}
         </Form>
        )}
+       {!submitted && (<Form form={formGithubId} layout={'vertical'}>
+          <div style={{paddingTop:25}} >
+            <Form.Item name="githubIdFormValue" rules={[{ required: true, message: '请输入GitHub ID' }]}>
+              <Input key="githubIdInputValue" value="githubIdInputValueName" placeholder="请输入你的github id" style={{ width: 200 }} />
+            </Form.Item>
+          </div>
+        </Form>
+       )}
         { !submitted && (
-        <Space style={{ marginTop: 64 }}>
-          <Input placeholder="请输入你的github id" style={{ width: 200 }} />
+        <Space style={{ marginTop: 24 }}>
+          
           <Button type="primary" onClick={async () => {
+            const githubIdValue = await formGithubId.validateFields()
+            setGithubId(githubIdValue.githubIdFormValue)
+
             const values = await form.validateFields()
             let score = 0
             const wrongAnswers: string[] = []
@@ -105,7 +120,6 @@ function App() {
               }
             }
             setWrongAnswers(wrongAnswers)
-            // setWrongAnswers([])
             setScore(score)
             setSubmitted(true)
             console.log("score", score)
@@ -115,7 +129,7 @@ function App() {
         )}
         {score >= 0 && (
           <div style={{ marginTop: 32 }}>
-            <Typography.Title level={4}>您的得分是{score}</Typography.Title>
+            <Typography.Title level={4}>{githubId} 你的得分是 {score}</Typography.Title>
           </div>
         )}
         {wrongAnswers.length > 0 && (
