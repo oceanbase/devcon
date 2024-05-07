@@ -1,4 +1,5 @@
 import 'bulma/css/bulma.css'
+import './dark.css'
 import { Form, Checkbox, Radio, Space, Typography, Button, Input } from 'antd'
 import React from 'react'
 import questionsData from './questions.json'
