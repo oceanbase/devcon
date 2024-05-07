@@ -303,6 +303,283 @@
         {"content":"正确"},
         {"content":"错误","isCorrect":true}
       ]
+    },
+    {
+      "id":"21",
+      "title": "下列关于OceanBase数据存储，说法错误的是",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"在OceanBase 数据库中，数据压缩通常会带来查询和写入性能的大幅度下降", "isCorrect":true},
+        {"content":"OceanBase 数据库基于 LSM-Tree 结构开发了自己的存储引擎。其中数据大致被分为基线数据（SSTable）和增量数据（MemTable）两部分。"},
+        {"content":"在完成数据导入后，我们通常需要主动触发对数据库进行合并，使增量数据可以和基线数据进行合并与压缩"},
+        {"content":"OceanBase 数据库中使用宏块来存储数据，每张表可能包含多个宏块，每个宏块占用 2M 空间"}
+      ]
+    },
+    {
+      "id":"22",
+      "title":"以下哪种导数方式支持将客户端本地文件的数据加载到数据库中？",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"load data /*+ parallel(N) load_batch_size(M) */ infile"},
+        {"content":"load data /*+ parallel(N) direct(true,0) */ infile"},
+        {"content":"load data /*+ parallel(N) */ local infile", "isCorrect":true},
+        {"content":"load data /*+ parallel(N) */ infile"}
+      ]
+    },
+    {
+      "id":"23",
+      "title":"使用obd对集群进行性能测试时，添加以下哪个参数可以显示详细的测试步骤？",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"-v", "isCorrect":true},
+        {"content":"-O"},
+        {"content":"--dt", "isCorrect":false},
+        {"content":"--test-only"}
+      ]
+    },
+    {
+      "id":"24",
+      "title":"在Oceanbase数据库4.x版本中，关于磁盘的表述，正确的是：",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"控制clog回收的参数为log_disk_utilization_threshold，默认值为90%", "isCorrect":false},
+        {"content":"控制clog停写的参数为log_disk_utilization_limit_threshold，默认为90%"},
+        {"content":"只有当 max_syslog_file_count 配置项的值设置为非 0 正数时，enable_syslog_recycle参数才会生效", "isCorrect":true},
+        {"content":"打印日志会影响性能，因此我们可以将日志限流参数syslog_io_bandwidth_limit调节成一个很小的值，既可以提升性能又不会对排查问题带来影响"}
+      ]
+    },
+    {
+      "id":"25",
+      "title":"全局索引全局唯一，可以定义自己独立的数据分布模式，既可以选择非分区模式也可以选择分区模式，为数据重新分区带来了可能，所以在需要使用索引的场景下，我们优先考虑使用全局索引",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":false},
+        {"content":"错误", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"26",
+      "title":"下列关于分区表说法正确的是：",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"对于DML语句，当单分区不可用时，整个查询都会受到影响", "isCorrect":false},
+        {"content":"对于DDL语句，重建索引或表只能对整个表或索引进行操作"},
+        {"content":"在 TP 场景中，分区可以减少共享资源的争用", "isCorrect":true},
+        {"content":"在 AP 场景中，分区可以利用分区裁剪加快查询的处理速度", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"27",
+      "title":"下列关于TPC-H测试模型，说法正确的是：",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"TPC-H测试模型基于 3NF 实现了一个数据仓库，主要模拟共包含 8 个基本关系", "isCorrect":true},
+        {"content":"TPC-H测试模型中，每张表的数据量大小，都与比例因子SF（Scale Factor）相关"},
+        {"content":"TPC-H测试模型包含了22个复杂分析型查询，主要评价指标是各个查询的响应时间", "isCorrect":true},
+        {"content":"TPC-H测试是典型的星型模型", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"28",
+      "title":"Oceanbase数据库在4.0版本取得创新突破，支持RTO＜8s，成为业内首个将 RTO 做到8 秒的数据库",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":true},
+        {"content":"错误"}
+      ]
+    },
+    {
+      "id":"29",
+      "title":"旁路导入仅支持通过LOAD DATA /*+ direct */语句进行导入",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":false},
+        {"content":"错误", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"30",
+      "title":"在4.x版本中，我们可以通过定义表组，可以控制一组表在物理存储上的邻近关系，减少分布式场景的开销，提升性能。表组要求加入的表要求与表组的分区方式完全一致。",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":false},
+        {"content":"错误", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"31",
+      "title":"以下哪个组件不能进行数据的增量迁移",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"Flink CDC", "isCorrect":false},
+        {"content":"DataX", "isCorrect":true},
+        {"content":"Canal", "isCorrect":false},
+        {"content":"SeaTunnel", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"32",
+      "title":"OMS迁移mysql到OceanBase，不支持以下哪个DDL的同步？",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"Create table", "isCorrect":false},
+        {"content":"Drop table", "isCorrect":false},
+        {"content":"Create view", "isCorrect":true},
+        {"content":"Alter table drop column", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"33",
+      "title":"OBLOADER支持以下哪些格式文件导入OceanBase？",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"DDL定义文件", "isCorrect":true},
+        {"content":"CSV数据文件", "isCorrect":true},
+        {"content":"SQL数据文件", "isCorrect":true},
+        {"content":"CUT数据文件", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"34",
+      "title":"OMS 部署 需要 docker 环境",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":true},
+        {"content":"错误", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"35",
+      "title":"OBLogProxy可以将OceanBase增量数据转换为binlog模式",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":true},
+        {"content":"错误", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"36",
+      "title":"OMS 部署时，不指定INFLUXDB或者CERESDB，迁移的监控数据也可以展示",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":false},
+        {"content":"错误", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"37",
+      "title":"OMS单节点部署完成之后，不支持扩容",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":false},
+        {"content":"错误", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"38",
+      "title":"OMS Store组件的作用是什么？",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"增量日志拉取", "isCorrect":true},
+        {"content":"数据校验", "isCorrect":false},
+        {"content":"兼容性比对", "isCorrect":false},
+        {"content":"连接目标数据库", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"39",
+      "title":"以下哪些操作，在OMS的迁移过程中是允许的？",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"增加迁移对象", "isCorrect":true},
+        {"content":"减少迁移对象", "isCorrect":true},
+        {"content":"修改数据迁移名称", "isCorrect":true},
+        {"content":"修改迁移表在目标端的名称", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"40",
+      "title":"以下哪些情况，会导致OMS迁移MySQL数据到OceanBase任务失败？",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"待迁移的表名和其中的列名包含中文字符", "isCorrect":true},
+        {"content":"OMS 社区版不支持 MySQL 数据库的索引字段大于 767 个字节（191 个字符）", "isCorrect":true},
+        {"content":"库名或者表名存在\"$$\"字符", "isCorrect":true},
+        {"content":"目标端存在Trigger", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"41",
+      "title":"以下关于TiDB迁移至OceanBase，描述正确的包括：",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"同步TiDB增量数据到OceanBase，需要用到Kafka来接受TiCDC的增量数据", "isCorrect":true},
+        {"content":"在创建TiDB数据源时，如果没有绑定Kafka，也能做增量同步", "isCorrect":false},
+        {"content":"OMS 社区版可以迁移TiDB数据库的无主键表", "isCorrect":false},
+        {"content":"OMS 社区版仅支持 TiCDC Open Protocol，不支持其它协议", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"42",
+      "title":"OMS meta数据库 必须为 OceanBase MySQL 模式",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":false},
+        {"content":"错误", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"43",
+      "title":"OBLOADER 兼容 mysqldump和 mydumper导出的数据。",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"正确", "isCorrect":true},
+        {"content":"错误", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"44",
+      "title":"关于OMS的能够实现的功能，以下哪个选型是正确的？ 1、数据全量迁移 2、数据增量迁移 3、数据校验 4、表结构迁移",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"1、2、3", "isCorrect":false},
+        {"content":"2、3、4", "isCorrect":false},
+        {"content":"1、3、4", "isCorrect":false},
+        {"content":"1、2、3、4", "isCorrect":true}
+      ]
+    },
+    {
+      "id":"45",
+      "title":"以下哪种方式可以正确修改Sink 的 WorkNum？",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"进入到OMS meta数据库中修改", "isCorrect":false},
+        {"content":"通过supervisor 命令行修改", "isCorrect":false},
+        {"content":"Web页面上进入对应迁移任务页面进行修改", "isCorrect":true},
+        {"content":"修改同步链路的配置文件", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"46",
+      "title":"以下关于OMS切片参数，哪个是控制切片内再分批的记录数？",
+      "type":"SingleChoice",
+      "answers": [
+        {"content":"sliceQueueSize", "isCorrect":false},
+        {"content":"batchSize", "isCorrect":true},
+        {"content":"sliceWorkerNum", "isCorrect":false},
+        {"content":"maxConnNum", "isCorrect":false}
+      ]
+    },
+    {
+      "id":"47",
+      "title":"OMS支持数据同步到哪些消息中间件？",
+      "type":"MultipleChoice",
+      "answers": [
+        {"content":"Kafka", "isCorrect":true},
+        {"content":"RocketMQ", "isCorrect":true},
+        {"content":"RabbitMQ", "isCorrect":false},
+        {"content":"ActiveMQ", "isCorrect":false}
+      ]
     }
   ]
 }
