@@ -4,11 +4,6 @@ import { Form, Checkbox, Radio, Space, Typography, Button, Input } from 'antd'
 import React from 'react'
 import questionsData from './questions.json'
 
-enum QuestionType {
-  MultipleChoice = 'MultipleChoice',
-  SingleChoice = 'SingleChoice',
-}
-
 type QuestionAnswer = {
   content: string
   isCorrect?: boolean
@@ -22,11 +17,34 @@ type Question = {
   answers: QuestionAnswer[]
 }
 
-const questions: Question[] = questionsData.questionsData
+function randomSamples<T>(arr: T[], numSamples: number): T[] {
+  const shuffled = [...arr]; // 复制原数组
+  const samples: T[] = [];
 
-const correctMapping: Record<string, string[]> = Object.fromEntries(questions.map((q) => [q.id, q.answers.filter((a) => a.isCorrect).map((a) => a.content)]))
-const questionMapping: Record<string, Question> = Object.fromEntries(questions.map((q) => [q.id, q]))
+  for (let i = 0; i < numSamples; i++) {
+    if (shuffled.length === 0) break;
+    const index = Math.floor(Math.random() * shuffled.length);
+    samples.push(shuffled.splice(index, 1)[0]);
+  }
 
+  return samples;
+}
+
+function isSingleChoiceQuestion(question: Question): boolean {
+  let rightAnswerCount = 0;
+  for (const answer of question.answers) {
+    if (answer.isCorrect) {
+      rightAnswerCount++;
+    }
+    if (rightAnswerCount > 1) {
+      return false;
+    }
+  }
+
+  return rightAnswerCount === 1;
+}
+
+const questions: Question[] = randomSamples(questionsData.questionsData, 20)
 
 function App() {
   const [form] = Form.useForm()
@@ -35,9 +53,17 @@ function App() {
   const [score, setScore] = React.useState<number>(-1)
   const [submitted, setSubmitted] = React.useState<boolean>(false)
   const [githubId, setGithubId] = React.useState<string>("")
+
+  let questionId = 0
   for (const q of questions) {
+    questionId++
+    q.id = questionId.toString()
     q.answers = q.answers.sort(() => Math.random() - 0.5)
   }
+
+  const correctMapping: Record<string, string[]> = Object.fromEntries(questions.map((q) => [q.id, q.answers.filter((a) => a.isCorrect).map((a) => a.content)]))
+  const questionMapping: Record<string, Question> = Object.fromEntries(questions.map((q) => [q.id, q]))
+
   return (
     <>
       <section className="hero is-info">
@@ -69,7 +95,7 @@ function App() {
               >
                 
                 {
-                  q.type === QuestionType.SingleChoice ?
+                  isSingleChoiceQuestion(q) ?
                     (<Radio.Group>
                       <Space direction={'vertical'}>
                         {q.answers.map((a) => <Radio key={a.content} value={a.content}>{a.content}</Radio>)}
@@ -95,7 +121,7 @@ function App() {
         </Form>
        )}
         { !submitted && (
-        <Space style={{ marginTop: 24 }}>
+        <Space style={{ marginTop: 10 }}>
           
           <Button type="primary" onClick={async () => {
             const githubIdValue = await formGithubId.validateFields()
@@ -129,7 +155,7 @@ function App() {
         </Space>
         )}
         {score >= 0 && (
-          <div style={{ marginTop: 32 }}>
+          <div style={{ marginTop: 22 }}>
             <Typography.Title level={4}>{githubId} 你的得分是 {score}</Typography.Title>
           </div>
         )}
