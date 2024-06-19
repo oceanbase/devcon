@@ -354,7 +354,7 @@
       "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"-v", "isCorrect":true},
+        {"content":"-v。Verbose，展示详细信息", "isCorrect":true},
         {"content":"-O。选择测试集群的优化级别"},
         {"content":"--dt。不传输测试数据", "isCorrect":false},
         {"content":"--test-only。仅测试，不做初始化"}
