@@ -3,6 +3,7 @@
     {
       "id": "1",
       "title": "哪一项不是 OceanBase 4.x 社区版的能力？",
+      "level": "1",
       "type": "SingleChoice",
       "answers": [
         {
@@ -23,13 +24,14 @@
     {
       "id": "2",
       "title": "OceanBase 中通过在多个副本之间同步 redo 日志的方式实现副本之间的数据一致性，当 leader 副本所在节点收到所有 follower 副本所在节点返回的 redo 日志落盘成功的消息之后，才会认为写操作执行成功，这时候会向用户返回 dml 执行成功的响应。",
+      "level": "1",
       "type": "SingleChoice",
       "answers": [
         {
-          "content": "正确"
+          "content": "是的。必须保证所有节点日志完全落地才能返回给客户端应答。"
         },
         {
-          "content": "错误",
+          "content": "不是的。OceanBase 采用Paxos一致性协议同步数据，只要保证大多数节点写日志成功，就可以返回给客户端。",
           "isCorrect": true
         }
       ]
@@ -37,6 +39,7 @@
     {
       "id": "3",
       "title": "以下对 OceanBase 数据库代理 ODP（obproxy）的描述正确的是",
+      "level":"1",
       "type": "MultipleChoice",
       "answers": [
         {
@@ -58,6 +61,7 @@
     {
       "id": "4",
       "title": "有一个 OceanBase 租户包含 3 个 zone，每个 zone 有 5 台 observer。在这个租户里创建 1 张表，在这张表上创建 10 个分区。请问这张表上的每个分区最多有几份全功能副本？",
+      "level": "3",
       "type": "SingleChoice",
       "answers": [
         {
@@ -78,6 +82,7 @@
     {
       "id": "5",
       "title": "有一个 OceanBase 集群包含 5 个 zone，每个 zone 里有 2 台 observer。用户在这个集群中创建 1 个租户，在这个租户里创建 1 张表，在这张表上创建 4 个分区。只读副本不可作为 Paxos 组的成员，请问这张表上的其中一个分区可能会有几份全功能副本？",
+      "level": "3",
       "type": "MultipleChoice",
       "answers": [
         {
@@ -105,6 +110,7 @@
     {
       "id": "6",
       "title": "以下哪几项属于 OceanBase 社区版适合的业务场景？",
+      "level": "1",
       "type": "MultipleChoice",
       "answers": [
         {
@@ -128,6 +134,7 @@
     {
       "id": "7",
       "title": "以下哪几项属于 OceanBase 4.x 社区版能够支持的功能？",
+      "level":"1",
       "type": "MultipleChoice",
       "answers": [
         {
@@ -150,13 +157,14 @@
     {
       "id": "8",
       "title": "OBD 和 OCP 都是可以用来部署集群的工具，对于在生产环境中部署 OceanBase 集群，二者没什么区别，任选其一即可。",
+      "level":"1",
       "type": "SingleChoice",
       "answers": [
         {
-          "content": "正确"
+          "content": "是的。OBD和OCP都可以部署集群，而且两者的功能是完全一样的。"
         },
         {
-          "content": "错误",
+          "content": "不是的。OBD和OCP虽然都能部署集群，但是它们的功能是有差别的，比如OCP支持集群监控",
           "isCorrect": true
         }
       ]
@@ -164,6 +172,7 @@
     {
       "id": "9",
       "title": "以下哪些是 OceanBase 代码开源的内容？",
+      "level":"1",
       "type": "MultipleChoice",
       "answers": [
         {
@@ -187,6 +196,7 @@
     {
       "id": "10",
       "title": "以下哪个 OceanBase 生态工具提供与同构/异构的数据库之间进行在线数据迁移，以及和各种消息中间件进行实时的数据同步等功能？",
+      "level":"1",
       "type": "SingleChoice",
       "answers": [
         {
@@ -207,6 +217,7 @@
     {
       "id":"11",
       "title": "OceanBase创建租户的资源分配的流程是？",
+      "level":"3",
       "type": "SingleChoice",
       "answers": [
         {"content":"创建资源池->创建资源单元->系统在observer上分配资源->创建租户"},
@@ -218,35 +229,39 @@
     {
       "id":"12",
       "title": "部署完 OceanBase 环境后，已经有sys租户了，不用麻烦新建一个租户，可以使用sys租户给业务使用。",
+      "level":"1",
       "type": "SingleChoice",
       "answers": [
-        {"content":"正确"},
-        {"content":"错误","isCorrect":true}
+        {"content":"是的。sys租户也是一个租户，没什么特殊的，可以直接当做业务租户来使用。"},
+        {"content":"不是的。sys租户是一个特殊的租户，通常用来管理数据库，通常也会有比较大的权限。","isCorrect":true}
       ]
     },
     {
       "id":"13",
       "title": "OceanBase 4.x 集群需要保证所有节点的时钟偏差在 100ms 以内。",
+      "level":"1",
       "type": "SingleChoice",
       "answers": [
-        {"content":"正确"},
-        {"content":"错误","isCorrect":true}
+        {"content":"是的。OceanBase 一直要求时钟偏差在100ms以内"},
+        {"content":"不是的。OceanBase 4.x 做了优化，不再那么严格要求时钟偏差必须保证在100ms以内了。","isCorrect":true}
       ]
     },
     {
       "id":"14",
       "title": "以下哪个租户变量是在租户创建后不允许修改的",
+      "level":"1",
       "type": "SingleChoice",
       "answers": [
-        {"content":"ob_query_timeout"},
-        {"content":"autocommit"},
-        {"content":"sql_mode"},
-        {"content":"lower_case_table_names","isCorrect":true}
+        {"content":"ob_query_timeout。表示查询超时时间"},
+        {"content":"autocommit。表示语句是否自动提交。"},
+        {"content":"sql_mode。通过设置不同的模式，数据库处理SQL时会有不同的表现。"},
+        {"content":"lower_case_table_names。识别表名是否区分大小写，是一个系统变量，不允许调整","isCorrect":true}
       ]
     },
     {
       "id":"15",
       "title": "生产环境安装部署 OceanBase 集群时，以下哪些步骤是必须要提前准备的",
+      "level":"3",
       "type":"MultipleChoice",
       "answers":[
         {"content":"配置ssh互信"},
@@ -257,7 +272,8 @@
     },
     {
       "id":"16",
-      "title": "下列哪两个业务，适合将租户级别的变量 ob_read_consistency 设置成'weak'？",
+      "title": "下列哪两个业务，适合将租户级别的变量 ob_read_consistency 设置成'weak'，表示有时候可以读取稍微旧一点的数据？",
+      "level":"1",
       "type":"MultipleChoice",
       "answers":[
         {"content":"转账系统"},
@@ -269,6 +285,7 @@
     {
       "id":"17",
       "title": "OceanBase 的参数有哪两个级别",
+      "level":"3",
       "type":"MultipleChoice",
       "answers":[
         {"content":"zone"},
@@ -280,6 +297,7 @@
     {
       "id":"18",
       "title": "租户的 session 变量只会在当前session生效，不影响该租户下的其他session。",
+      "level":"1",
       "type":"SingleChoice",
       "answers":[
         {"content":"正确","isCorrect":true},
@@ -289,6 +307,7 @@
     {
       "id":"19",
       "title": "OceanBase 是一款分布式关系型数据库，创建租户后主副本只能打散到所有Zone内，不能聚焦到一个Zone内。",
+      "level":"1",
       "type":"SingleChoice",
       "answers":[
         {"content":"正确"},
@@ -298,6 +317,7 @@
     {
       "id":"20",
       "title": "OCP 部署 OceanBase 集群的时候只能使用 admin 用户。",
+      "level":"1",
       "type":"SingleChoice",
       "answers":[
         {"content":"正确"},
@@ -307,6 +327,7 @@
     {
       "id":"21",
       "title": "下列关于OceanBase数据存储，说法错误的是",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"在OceanBase 数据库中，数据压缩通常会带来查询和写入性能的大幅度下降", "isCorrect":true},
@@ -318,6 +339,7 @@
     {
       "id":"22",
       "title":"以下哪种导数方式支持将客户端本地文件的数据加载到数据库中？",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"load data /*+ parallel(N) load_batch_size(M) */ infile"},
@@ -329,17 +351,19 @@
     {
       "id":"23",
       "title":"使用obd对集群进行性能测试时，添加以下哪个参数可以显示详细的测试步骤？",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"-v", "isCorrect":true},
-        {"content":"-O"},
-        {"content":"--dt", "isCorrect":false},
-        {"content":"--test-only"}
+        {"content":"-v。Verbose，展示详细信息", "isCorrect":true},
+        {"content":"-O。选择测试集群的优化级别"},
+        {"content":"--dt。不传输测试数据", "isCorrect":false},
+        {"content":"--test-only。仅测试，不做初始化"}
       ]
     },
     {
       "id":"24",
       "title":"在Oceanbase数据库4.x版本中，关于磁盘的表述，正确的是：",
+      "level":"3",
       "type":"SingleChoice",
       "answers": [
         {"content":"控制clog回收的参数为log_disk_utilization_threshold，默认值为90%", "isCorrect":false},
@@ -351,15 +375,17 @@
     {
       "id":"25",
       "title":"全局索引全局唯一，可以定义自己独立的数据分布模式，既可以选择非分区模式也可以选择分区模式，为数据重新分区带来了可能，所以在需要使用索引的场景下，我们优先考虑使用全局索引",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"正确", "isCorrect":false},
-        {"content":"错误", "isCorrect":true}
+        {"content":"不是的。局部索引与表数据的分布是一致的，访问效率会更高。", "isCorrect":true}
       ]
     },
     {
       "id":"26",
       "title":"下列关于分区表说法正确的是：",
+      "level":"1",
       "type":"MultipleChoice",
       "answers": [
         {"content":"对于DML语句，当单分区不可用时，整个查询都会受到影响", "isCorrect":false},
@@ -371,6 +397,7 @@
     {
       "id":"27",
       "title":"下列关于TPC-H测试模型，说法正确的是：",
+      "level":"3",
       "type":"MultipleChoice",
       "answers": [
         {"content":"TPC-H测试模型基于 3NF 实现了一个数据仓库，主要模拟共包含 8 个基本关系", "isCorrect":true},
@@ -382,6 +409,7 @@
     {
       "id":"28",
       "title":"Oceanbase数据库在4.0版本取得创新突破，支持RTO＜8s，成为业内首个将 RTO 做到8 秒的数据库",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"正确", "isCorrect":true},
@@ -391,15 +419,17 @@
     {
       "id":"29",
       "title":"旁路导入仅支持通过LOAD DATA /*+ direct */语句进行导入",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"正确", "isCorrect":false},
-        {"content":"错误", "isCorrect":true}
+        {"content":"正确。导入必须通过 load data 命令执行", "isCorrect":false},
+        {"content":"错误。旁路导入还可以使用APPEND方式。", "isCorrect":true}
       ]
     },
     {
       "id":"30",
       "title":"在4.x版本中，我们可以通过定义表组，可以控制一组表在物理存储上的邻近关系，减少分布式场景的开销，提升性能。表组要求加入的表要求与表组的分区方式完全一致。",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"正确", "isCorrect":false},
@@ -409,17 +439,19 @@
     {
       "id":"31",
       "title":"以下哪个组件不能进行数据的增量迁移",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"Flink CDC", "isCorrect":false},
-        {"content":"DataX", "isCorrect":true},
-        {"content":"Canal", "isCorrect":false},
-        {"content":"SeaTunnel", "isCorrect":false}
+        {"content":"Flink CDC。可以捕捉并处理数据库的变更操作，因此可以支持增量迁移", "isCorrect":false},
+        {"content":"DataX。主要用在异构数据源之间的高效的数据传输，设计了全量同步机制", "isCorrect":true},
+        {"content":"Canal。可以实时监控MySQL的binlog，实现MySQL的增量同步", "isCorrect":false},
+        {"content":"SeaTunnel。不是一个专用的数据迁移工具，但是有办法方便的创建和执行相关任务", "isCorrect":false}
       ]
     },
     {
       "id":"32",
       "title":"OMS迁移mysql到OceanBase，不支持以下哪个DDL的同步？",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"Create table", "isCorrect":false},
@@ -431,6 +463,7 @@
     {
       "id":"33",
       "title":"OBLOADER支持以下哪些格式文件导入OceanBase？",
+      "level":"1",
       "type":"MultipleChoice",
       "answers": [
         {"content":"DDL定义文件", "isCorrect":true},
@@ -441,19 +474,21 @@
     },
     {
       "id":"34",
-      "title":"OMS 部署 需要 docker 环境",
+      "title":"OMS 部署需要 docker 环境",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"正确", "isCorrect":true},
-        {"content":"错误", "isCorrect":false}
+        {"content":"正确。OMS 的部署比较复杂，需要使用已有Docker镜像来部署", "isCorrect":true},
+        {"content":"错误。", "isCorrect":false}
       ]
     },
     {
       "id":"35",
       "title":"OBLogProxy可以将OceanBase增量数据转换为binlog模式",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"正确", "isCorrect":true},
+        {"content":"正确。OBLogProxy 是 OceanBase 的增量日志代理服务，它可以与 OceanBase 建立连接并进行增量日志读取，并且提供了Binlog模式", "isCorrect":true},
         {"content":"错误", "isCorrect":false}
       ]
     },
@@ -469,15 +504,17 @@
     {
       "id":"37",
       "title":"OMS单节点部署完成之后，不支持扩容",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"正确", "isCorrect":false},
-        {"content":"错误", "isCorrect":true}
+        {"content":"错误。OMS 在资源不足时，可以随时扩容", "isCorrect":true}
       ]
     },
     {
       "id":"38",
       "title":"OMS Store组件的作用是什么？",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"增量日志拉取", "isCorrect":true},
@@ -489,6 +526,7 @@
     {
       "id":"39",
       "title":"以下哪些操作，在OMS的迁移过程中是允许的？",
+      "level":"1",
       "type":"MultipleChoice",
       "answers": [
         {"content":"增加迁移对象", "isCorrect":true},
@@ -500,6 +538,7 @@
     {
       "id":"40",
       "title":"以下哪些情况，会导致OMS迁移MySQL数据到OceanBase任务失败？",
+      "level":"1",
       "type":"MultipleChoice",
       "answers": [
         {"content":"待迁移的表名和其中的列名包含中文字符", "isCorrect":true},
@@ -511,6 +550,7 @@
     {
       "id":"41",
       "title":"以下关于TiDB迁移至OceanBase，描述正确的包括：",
+      "level":"3",
       "type":"MultipleChoice",
       "answers": [
         {"content":"同步TiDB增量数据到OceanBase，需要用到Kafka来接受TiCDC的增量数据", "isCorrect":true},
@@ -522,6 +562,7 @@
     {
       "id":"42",
       "title":"OMS meta数据库 必须为 OceanBase MySQL 模式",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"正确", "isCorrect":false},
@@ -531,6 +572,7 @@
     {
       "id":"43",
       "title":"OBLOADER 兼容 mysqldump和 mydumper导出的数据。",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"正确", "isCorrect":true},
@@ -540,6 +582,7 @@
     {
       "id":"44",
       "title":"关于OMS的能够实现的功能，以下哪个选型是正确的？ 1、数据全量迁移 2、数据增量迁移 3、数据校验 4、表结构迁移",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
         {"content":"1、2、3", "isCorrect":false},
@@ -551,9 +594,10 @@
     {
       "id":"45",
       "title":"以下哪种方式可以正确修改Sink 的 WorkNum？",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"进入到OMS meta数据库中修改", "isCorrect":false},
+        {"content":"进入到OMS meta数据库中修改，我们可以随意按照需求调整数据库数据", "isCorrect":false},
         {"content":"通过supervisor 命令行修改", "isCorrect":false},
         {"content":"Web页面上进入对应迁移任务页面进行修改", "isCorrect":true},
         {"content":"修改同步链路的配置文件", "isCorrect":false}
@@ -562,17 +606,19 @@
     {
       "id":"46",
       "title":"以下关于OMS切片参数，哪个是控制切片内再分批的记录数？",
+      "level":"1",
       "type":"SingleChoice",
       "answers": [
-        {"content":"sliceQueueSize", "isCorrect":false},
-        {"content":"batchSize", "isCorrect":true},
-        {"content":"sliceWorkerNum", "isCorrect":false},
-        {"content":"maxConnNum", "isCorrect":false}
+        {"content":"sliceQueueSize。描述队列大小", "isCorrect":false},
+        {"content":"batchSize。描述分批大小", "isCorrect":true},
+        {"content":"sliceWorkerNum。工作线程个数", "isCorrect":false},
+        {"content":"maxConnNum。最大连接数", "isCorrect":false}
       ]
     },
     {
       "id":"47",
       "title":"OMS支持数据同步到哪些消息中间件？",
+      "level":"1",
       "type":"MultipleChoice",
       "answers": [
         {"content":"Kafka", "isCorrect":true},
