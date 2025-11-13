@@ -138,6 +138,12 @@ class QueryTool:
         except Exception as e:
             _logger.debug(f"Could not save history: {e}")
 
+    def list_items(self) -> Dict[str, List[Any]]:
+        """
+        List the collection.
+        """
+        results = self.collection.get(where={"name": {"$ne":""}}, include=['metadatas'])
+        return results
     def get(self, tourism_names: List[str], places: List[str]) -> List[Dict[str, Any]]:
         """
         Get the tourism information from the collection.
@@ -289,7 +295,7 @@ class QueryTool:
             padding=(0, 1)
         )
         table.add_column("Command", style="cyan", width=35, overflow="fold")
-        table.add_column("Description", style="white", width=50, overflow="fold")
+        table.add_column("Description", style="white", width=60, overflow="fold")
 
         # Add command rows
         table.add_row(
@@ -303,6 +309,10 @@ class QueryTool:
         table.add_row(
             "[bold]count[/bold]",
             "Show the number of items in the collection"
+        )
+        table.add_row(
+            "[bold]list[/bold]",
+            "List some items in the collection"
         )
         table.add_row(
             "[bold]get name=<tourism1,tourism2,...> place=<place1,place2,...>[/bold]",
@@ -357,100 +367,102 @@ class QueryTool:
                         command = parts[0].lower()
 
                         # List of all valid commands
-                        valid_commands = ['help', 'h', 'top', 'count', 'get', 'fulltext',
-                                         'vector', 'hs', 'exit', 'quit', 'q', 'bye']
+                        # It's a command, handle it
+                        if command in ['exit', 'quit', 'q', 'bye']:
+                            self.console.print("[bold green]Goodbye![/bold green]")
+                            self._save_history()
+                            break
+                        elif command == 'help' or command == 'h':
+                            self.show_help_commands()
+                            continue
+                        elif command == 'count':
+                            try:
+                                count = self.collection.count()
+                                self.console.print(f"\n[bold]Collection[/bold] [cyan]'{self.collection_name}'[/cyan] [bold]contains[/bold] [green]{count:,}[/green] [bold]items.[/bold]\n")
+                            except Exception as e:
+                                self.console.print(f"[red]Error getting collection count: {e}[/red]\n")
+                            continue
+                        elif command == 'list':
+                            try:
+                                results = self.list_items()
+                                self.format_results(results, user_input)
+                            except Exception as e:
+                                self.console.print(f"[red]Error while listing collection: {e}[/red]\n")
+                            continue
 
-                        if command in valid_commands:
-                            # It's a command, handle it
-                            if command in ['exit', 'quit', 'q', 'bye']:
-                                self.console.print("[bold green]Goodbye![/bold green]")
-                                self._save_history()
-                                break
-                            elif command == 'help' or command == 'h':
-                                self.show_help_commands()
+                        elif command == 'top':
+                            try:
+                                new_top_k = int(user_input.split()[1])
+                                if new_top_k > 0:
+                                    self.top_k = new_top_k
+                                    self.console.print(f"[green]Top-K set to[/green] [cyan]{self.top_k}[/cyan]")
+                                else:
+                                    self.console.print("[red]Error: Top-K must be a positive integer[/red]")
+                            except (IndexError, ValueError):
+                                self.console.print("[red]Error: Usage: top <number>[/red]")
+                            continue
+                        elif command == 'get':
+                            try:
+                                args = user_input.split()
+                                tourism_names = []
+                                places = []
+                                for arg in args[1:]:
+                                    key, value = arg.split('=')
+                                    if key.lower() == 'name':
+                                        tourism_names.extend(value.split(','))
+                                    elif key.lower() == 'place':
+                                        places.extend(value.split(','))
+                                results = self.get(tourism_names, places)
+                                self.format_results(results, user_input)
+                            except Exception as e:
+                                _print_exception(e, self.console)
                                 continue
-                            elif command == 'count':
-                                try:
-                                    count = self.collection.count()
-                                    self.console.print(f"\n[bold]Collection[/bold] [cyan]'{self.collection_name}'[/cyan] [bold]contains[/bold] [green]{count:,}[/green] [bold]items.[/bold]\n")
-                                except Exception as e:
-                                    self.console.print(f"[red]Error getting collection count: {e}[/red]\n")
+                        elif command == 'fulltext':
+                            try:
+                                args = user_input.split()
+                                keywords = args[1:]
+                                results = self.query_documents(keywords)
+                                self.format_results(results, user_input)
+                            except Exception as e:
+                                _print_exception(e, self.console)
                                 continue
-                            elif command == 'top':
-                                try:
-                                    new_top_k = int(user_input.split()[1])
-                                    if new_top_k > 0:
-                                        self.top_k = new_top_k
-                                        self.console.print(f"[green]Top-K set to[/green] [cyan]{self.top_k}[/cyan]")
+                        elif command == 'vector':
+                            try:
+                                args = user_input.split(maxsplit=1)
+                                if len(args) < 2:
+                                    self.console.print("[red]Error: Usage: vector <query_text>[/red]")
+                                    continue
+                                query_text = args[1]
+                                results = self.query(query_text)
+                                self.format_results(results, user_input)
+                            except Exception as e:
+                                _print_exception(e, self.console)
+                                continue
+                        elif command == 'hs':
+                            try:
+                                args = user_input.split()
+                                if len(args) < 2:
+                                    self.console.print("[red]Error: Usage: hs fulltext=<keyword1,keyword2,...> vector=<query_text>[/red]")
+                                    continue
+                                fulltext_keywords = []
+                                vector_query_text = None
+                                for arg in args[1:]:
+                                    key, value = arg.split('=')
+                                    if key.lower() == 'fulltext':
+                                        fulltext_keywords.extend(value.split(','))
+                                    elif key.lower() == 'vector':
+                                        vector_query_text = value
                                     else:
-                                        self.console.print("[red]Error: Top-K must be a positive integer[/red]")
-                                except (IndexError, ValueError):
-                                    self.console.print("[red]Error: Usage: top <number>[/red]")
+                                        self.console.print(f"[yellow]Unknown key:[/yellow] [cyan]{key}[/cyan]")
+                                        continue
+                                results = self.hybrid_search(fulltext_keywords, vector_query_text)
+                                self.format_results(results, user_input)
+                            except Exception as e:
+                                _print_exception(e, self.console)
                                 continue
-                            elif command == 'get':
-                                try:
-                                    args = user_input.split()
-                                    tourism_names = []
-                                    places = []
-                                    for arg in args[1:]:
-                                        key, value = arg.split('=')
-                                        if key.lower() == 'name':
-                                            tourism_names.extend(value.split(','))
-                                        elif key.lower() == 'place':
-                                            places.extend(value.split(','))
-                                    results = self.get(tourism_names, places)
-                                    self.format_results(results, user_input)
-                                except Exception as e:
-                                    _print_exception(e, self.console)
-                                    continue
-                            elif command == 'fulltext':
-                                try:
-                                    args = user_input.split()
-                                    keywords = args[1:]
-                                    results = self.query_documents(keywords)
-                                    self.format_results(results, user_input)
-                                except Exception as e:
-                                    _print_exception(e, self.console)
-                                    continue
-                            elif command == 'vector':
-                                try:
-                                    args = user_input.split(maxsplit=1)
-                                    if len(args) < 2:
-                                        self.console.print("[red]Error: Usage: vector <query_text>[/red]")
-                                        continue
-                                    query_text = args[1]
-                                    results = self.query(query_text)
-                                    self.format_results(results, user_input)
-                                except Exception as e:
-                                    _print_exception(e, self.console)
-                                    continue
-                            elif command == 'hs':
-                                try:
-                                    args = user_input.split()
-                                    if len(args) < 2:
-                                        self.console.print("[red]Error: Usage: hs fulltext=<keyword1,keyword2,...> vector=<query_text>[/red]")
-                                        continue
-                                    fulltext_keywords = []
-                                    vector_query_text = None
-                                    for arg in args[1:]:
-                                        key, value = arg.split('=')
-                                        if key.lower() == 'fulltext':
-                                            fulltext_keywords.extend(value.split(','))
-                                        elif key.lower() == 'vector':
-                                            vector_query_text = value
-                                        else:
-                                            self.console.print(f"[yellow]Unknown key:[/yellow] [cyan]{key}[/cyan]")
-                                            continue
-                                    results = self.hybrid_search(fulltext_keywords, vector_query_text)
-                                    self.format_results(results, user_input)
-                                except Exception as e:
-                                    _print_exception(e, self.console)
-                                    continue
                         else:
-                            # First word is not a recognized command - treat as regular query
-                            self.console.print(f"\n[bold yellow]Searching for:[/bold yellow] [cyan]'{user_input}'[/cyan]...")
-                            results = self.query(user_input)
-                            self.format_results(results, user_input)
+                            self.console.print(f"[yellow]Unknown command:[/yellow] [cyan]{command}[/cyan]")
+                            continue
                     else:
                         # Empty input (shouldn't reach here due to check above, but just in case)
                         continue
