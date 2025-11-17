@@ -3,6 +3,7 @@ import os
 from collections import namedtuple
 from sentence_transformers import SentenceTransformer
 import pyseekdb
+#import pylibseekdb
 from pyseekdb import HNSWConfiguration
 from pyseekdb.client import DefaultEmbeddingFunction
 import logging
