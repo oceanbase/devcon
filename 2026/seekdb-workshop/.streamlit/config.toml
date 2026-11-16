@@ -1,0 +1,24 @@
+[server]
+headless = true
+address = "0.0.0.0"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+# 与课程的 JupyterLab Dark 使用相同的黑灰背景与蓝色强调色。
+base = "dark"
+primaryColor = "#1976D2"
+backgroundColor = "#111111"
+secondaryBackgroundColor = "#212121"
+textColor = "#E0E0E0"
+linkColor = "#64B5F6"
+borderColor = "#424242"
+showWidgetBorder = true
+dataframeBorderColor = "#424242"
+dataframeHeaderBackgroundColor = "#212121"
+dataframeHeaderTextColor = "#E0E0E0"
+codeBackgroundColor = "#212121"
+baseRadius = "4px"
+font = "PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Noto Sans CJK SC, Noto Sans SC, system-ui, sans-serif"
+codeFont = "Menlo, Consolas, Liberation Mono, DejaVu Sans Mono, Noto Sans Mono CJK SC, PingFang SC, Microsoft YaHei UI, monospace"

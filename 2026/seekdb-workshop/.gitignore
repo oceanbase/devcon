@@ -1,0 +1,60 @@
+# 本机 Python 环境与运行数据。
+/.venv/
+/.venv.failed-*/
+/venv/
+/env/
+/.runtime/
+/.jupyter/
+
+# 模型权重使用时下载，不纳入 Git；保留模型目录的使用说明。
+/models/*
+!/models/README.md
+*.onnx
+*.safetensors
+*.ckpt
+*.whl
+
+# 本机密钥与登录配置；保留不含密钥的配置示例。
+.env
+.env.*
+!.env.example
+/.streamlit/secrets.toml
+
+# 采集缓存、生成的分发包、执行结果、截图与讲义备份。
+/data/raw/
+/dist/
+/build/
+/reports/
+
+# Notebook 检查点与临时保存文件。
+.ipynb_checkpoints/
+*.ipynb.tmp
+*.ipynb.bak
+
+# Python 与检查工具的缓存。
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# 编辑器、操作系统与临时文件。
+.idea/
+.vscode/
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*~
