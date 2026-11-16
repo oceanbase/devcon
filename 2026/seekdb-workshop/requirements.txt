@@ -1,0 +1,48 @@
+# Workshop 全部 Python 依赖统一在此维护，后续新依赖也追加到本文件。
+# pip install -r requirements.txt 会使用清华 PyPI 镜像。
+--index-url https://pypi.tuna.tsinghua.edu.cn/simple
+# PyTorch CPU wheel 来自官方 CPU 源。
+--find-links https://download.pytorch.org/whl/cpu/torch/
+--find-links ./wheels
+
+# 本地 seekdb 运行时。
+pylibseekdb==1.4.0.post2
+# 用于参数化 SQL、批量写入及后续查询。
+PyMySQL==1.2.4
+
+# 组织者采集和整理电影资料使用的依赖。
+requests[socks]==2.34.2
+opencc-python-reimplemented==0.1.7
+
+# 中文 Embedding：Sentence Transformers + PyTorch CPU。
+# 权重不随仓库发放，首次自定义查询时由 huggingface_hub 下载固定版本。
+# macOS 的 wheel 直接包含 CPU 后端；Windows / Linux 固定 CPU 构建。
+sentence-transformers==6.3.0
+transformers==5.22.2
+tokenizers==0.23.3
+torch==2.15.0; sys_platform == "darwin"
+torch==2.15.0+cpu; sys_platform != "darwin"
+# Windows Python 3.15 的这两个间接依赖随完整资料包附带预构建 wheel。
+PyYAML==6.0.3
+zstandard==0.25.0
+
+# GLM 标准 API 与 LangChain 工具调用联调。
+langchain-core==1.7.6
+langchain-openai==1.7.4
+openai==3.48.0
+httpx2==2.16.0
+httpx[socks]==0.28.1
+python-dotenv==1.2.4
+
+# 第七课检索界面与第八课 LangChain 推荐界面共用。
+streamlit==1.67.0
+
+# Notebook 课程与自动验证。
+jupyterlab==4.6.6
+ipykernel==7.4.0
+nbformat==5.11.1
+nbclient==0.11.0
+psutil==7.2.2
+jupyterlab-language-pack-zh-CN==4.5.post3
+# 组织者生成课程原理图；图片以内嵌附件发放。
+Pillow==13.0.0

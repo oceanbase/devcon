@@ -1,0 +1,12 @@
+{
+  "source": "TMDB",
+  "source_url": "https://www.themoviedb.org/",
+  "usage_information": "https://developer.themoviedb.org/docs/faq",
+  "attribution": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
+  "movie_count": 500,
+  "data_language": "zh-CN",
+  "as_of": "2026-11-11",
+  "prepared_at": "2026-11-11T10:26:02.921304+00:00",
+  "model": "BAAI/bge-small-zh-v1.5@7999e1d3359715c523056ef9478215996d62a620:st-torch-fp32",
+  "embedding_backend": "sentence-transformers"
+}

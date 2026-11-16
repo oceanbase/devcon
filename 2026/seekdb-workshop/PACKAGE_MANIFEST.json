@@ -1,0 +1,388 @@
+{
+  "format_version": 1,
+  "created_at": "2026-11-13T17:31:09+08:00",
+  "variant": "glm",
+  "api_key_configured": false,
+  "python_requires": "CPython >=3.11,<4",
+  "full_workshop_tested": [
+    "macOS arm64 CPython 3.12",
+    "Windows x86_64 CPython 3.15.2"
+  ],
+  "embedding_backend": "sentence-transformers",
+  "embedding_device": "cpu",
+  "embedding_model_tag": "BAAI/bge-small-zh-v1.5@7999e1d3359715c523056ef9478215996d62a620:st-torch-fp32",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 388,
+      "sha256": "6a840755a1d0796f5c1e4fa14bf679598b340b5ad60c69f528b9de77af58a31d"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 861,
+      "sha256": "735346319397836c685798d8c37e55d029952d54667c3b8a5bd9a09e16295549"
+    },
+    {
+      "path": ".streamlit/config.toml",
+      "bytes": 774,
+      "sha256": "fba5a4905a9871ea6f9a17ced5248ca05b4b40131ead665265bbc5108b6c5982"
+    },
+    {
+      "path": "DATA_SOURCE.json",
+      "bytes": 499,
+      "sha256": "64c80ae522a926fadc7a2805d249fc370d4fc2b2faa71b7da632f5c124af4a88"
+    },
+    {
+      "path": "README.md",
+      "bytes": 12224,
+      "sha256": "80b3fb1e9f531656c9a3c6f45fad509b7f0f86a8afc428066375a344b17ddea0"
+    },
+    {
+      "path": "Workshop.ipynb",
+      "bytes": 3727621,
+      "sha256": "0aa438917a1eb0888d2dfb778e0191b84cda19aba8762b51f9e862e931de6eca"
+    },
+    {
+      "path": "app.py",
+      "bytes": 22694,
+      "sha256": "cea210907eee61ad66a7e44cac9cb0dc89f9179cd24f659a14b6d91e54102beb"
+    },
+    {
+      "path": "assets/branding/SOURCE.md",
+      "bytes": 365,
+      "sha256": "58ad7094a2db63092efba9de3b012d19a8224966e04417aae5638611cbd3d48d"
+    },
+    {
+      "path": "assets/branding/seekdb.ico",
+      "bytes": 2089,
+      "sha256": "b729d87f9bb99b89758d9bf7bae0757205099c94824f3977db00c2c96bbfea6e"
+    },
+    {
+      "path": "assets/branding/seekdb.png",
+      "bytes": 431,
+      "sha256": "b8099b392fa48053c2387210647af878f483bf449c39518d835cdbfbee8619db"
+    },
+    {
+      "path": "assets/community/workshop-wechat-group.png",
+      "bytes": 47503,
+      "sha256": "fbc24508222c04ad3ab358da55578c19ade135e5321381de13dca4dc8b6ea4c2"
+    },
+    {
+      "path": "assets/figures/01-architecture.png",
+      "bytes": 207027,
+      "sha256": "1336243a97e155ce5074686950fa246f157d803f87ab48546ec0decdd666450a"
+    },
+    {
+      "path": "assets/figures/02-filter-scope.png",
+      "bytes": 144713,
+      "sha256": "ba579128dec9ba08d7980b89a0a3fa344c10b085b79b08ec78a127bc71b1421e"
+    },
+    {
+      "path": "assets/figures/03-fulltext.png",
+      "bytes": 122437,
+      "sha256": "1be5f592d9bf06ac8498bccadf17a03194fe9cc9e92a79fd5e8bcff82dc7dbd9"
+    },
+    {
+      "path": "assets/figures/04-vector.png",
+      "bytes": 190855,
+      "sha256": "20c361867c0f41b9f44db43553fe2eb192c2655e71233a19df0156927bde05e5"
+    },
+    {
+      "path": "assets/figures/05-hybrid-rrf.png",
+      "bytes": 160646,
+      "sha256": "3d1e9c215357938e65c5b5c13db8a0443a24dc0ca50dc7d1c355863f2c80206a"
+    },
+    {
+      "path": "assets/figures/06-langchain.png",
+      "bytes": 210328,
+      "sha256": "82a877a1484d43191c5ab1927bc5f9c14ddd22f4119105e899b9bf4abf4b4550"
+    },
+    {
+      "path": "assets/figures/07-workshop-closing.png",
+      "bytes": 1673025,
+      "sha256": "2e71d790c69bdfa6befe82aab3c5aa94a3d321423f4165128e32ee84473ae341"
+    },
+    {
+      "path": "course/__init__.py",
+      "bytes": 52,
+      "sha256": "a691fc6b202c3daf93b7344db4e5599ca1ba36713608425051d14597886f7a64"
+    },
+    {
+      "path": "course/lab.py",
+      "bytes": 10740,
+      "sha256": "7ce413a822a7ad978fe905e99f596cb001dc6174a17012f257bcc1c30cfa05f4"
+    },
+    {
+      "path": "course/presentation.py",
+      "bytes": 12047,
+      "sha256": "71614fedc78209d69aae87692d0ead85b7bd5cf7d4d21526d40774013039847c"
+    },
+    {
+      "path": "course/services.py",
+      "bytes": 12519,
+      "sha256": "712489c2a4c1f99f8a25015f19ae1241930fe1202703dcb73fcbc3be08fb9f2d"
+    },
+    {
+      "path": "data/collection-report.json",
+      "bytes": 2391,
+      "sha256": "563b8d7196bb1434a938caded72023efdefd62c8a97c307a3dd6a048ad6cbd29"
+    },
+    {
+      "path": "data/embedding-manifest.json",
+      "bytes": 2126,
+      "sha256": "89010e3547389398372f00f0d74d21634224059486dc6c08e0bd48e9b8fd24bc"
+    },
+    {
+      "path": "data/movie-embeddings.json",
+      "bytes": 5454789,
+      "sha256": "b5a0226f34857516141bb70ba233ad12495eb3c15f922186bb5ecb88e1b890bd"
+    },
+    {
+      "path": "data/movies.json",
+      "bytes": 646205,
+      "sha256": "be9923fe9b7e49b95f28be3f1953c6b3c883a9b4ff8317934aa8658ac2684691"
+    },
+    {
+      "path": "data/query-embeddings.json",
+      "bytes": 109302,
+      "sha256": "34dced4ce6858de2d94bf9f3808aa9d3055858b2d549921f8ddb1d8389448b99"
+    },
+    {
+      "path": "data/search-queries.json",
+      "bytes": 1661,
+      "sha256": "2d049d5016196635cdf81929af8ef51267e94f280d1f0549444a53e508436579"
+    },
+    {
+      "path": "data/search-query-references.json",
+      "bytes": 2052,
+      "sha256": "84b5faacd4f51acb2594cf301524b2e0e4f4df51c6317a8ebebcc08306beae72"
+    },
+    {
+      "path": "docs/licenses/FlagEmbedding-MIT.txt",
+      "bytes": 1065,
+      "sha256": "587a673933425dbc36ec61268d3b954051b2d3ef3c9b322ede357976055ffdd5"
+    },
+    {
+      "path": "docs/teaching-guide.md",
+      "bytes": 6268,
+      "sha256": "cb9fbc698f561692a125ef8f0b161bc88d81859259f4a4a57f131215cf2925ce"
+    },
+    {
+      "path": "examples/codex_chat.py",
+      "bytes": 8415,
+      "sha256": "7514847f4bea97593b094141233200f869023b0eb0b48d3ca681663ffa27381a"
+    },
+    {
+      "path": "examples/embedding_data.py",
+      "bytes": 3446,
+      "sha256": "7108a72175cdd53d40523a3232bb4be5e21a280319a99fd8336a0690d751af8b"
+    },
+    {
+      "path": "examples/glm_chat.py",
+      "bytes": 5548,
+      "sha256": "48cb029e56053144891a5fff1e33b990aa1fa146289d0c988258a09c32695fcd"
+    },
+    {
+      "path": "examples/local_embeddings.py",
+      "bytes": 3835,
+      "sha256": "ae94b60c1404c54c6b18c383c1e7443c0301209e9b3856990a28df94a4bd5663"
+    },
+    {
+      "path": "examples/movie_recommendations.py",
+      "bytes": 13800,
+      "sha256": "acb5529114f6622f5f158ff7063c5b1326c077a9fce57017456a593a96a2ffde"
+    },
+    {
+      "path": "examples/movie_retrieval.py",
+      "bytes": 11284,
+      "sha256": "1281097aca3175722cb188dd7042c21556ca17258d69a3a8a7aab243e86506d8"
+    },
+    {
+      "path": "examples/recommendation_schema.py",
+      "bytes": 880,
+      "sha256": "7933b24e643f71f523bf68a8b1fce8a3de630705482528d6cd73347f9ded6fde"
+    },
+    {
+      "path": "examples/streamlit_services.py",
+      "bytes": 2210,
+      "sha256": "d21d74c3b0d00475c014f3aa2671de087035c5e3264bcf207f78ae7c0b12bca2"
+    },
+    {
+      "path": "models/README.md",
+      "bytes": 1087,
+      "sha256": "24e828aa71e044c08e3d4924f97fa156011d9d4d23c86786370df3330aeff7e5"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 1499,
+      "sha256": "3836e0652c680a5aab0e6fe0df1b43c41255f36fb8b3133b6ce61d943d9b17b3"
+    },
+    {
+      "path": "scripts/launch_notebook.py",
+      "bytes": 2736,
+      "sha256": "b3dfbd67eeecb446e62b87752ce51b22ebbb6d80f42c964c62771af0a89d9a5e"
+    },
+    {
+      "path": "scripts/setup_environment.py",
+      "bytes": 5327,
+      "sha256": "5ede106e66bb24d4e90580f490d359f44b7f4ed15bc597c81c7c1aa22d371913"
+    },
+    {
+      "path": "scripts/stop_workshop.py",
+      "bytes": 7592,
+      "sha256": "925458365c7692ef1aa6a91900ae48c1e5411e33c3959f8bf060fbb383c1312f"
+    },
+    {
+      "path": "scripts/validate_notebook.py",
+      "bytes": 3048,
+      "sha256": "ec1966f01eb09b23599f10148204665d69fd7c7f62fc5c5a347b90db1e23a6c5"
+    },
+    {
+      "path": "search_app.py",
+      "bytes": 146,
+      "sha256": "89c6d95393ab34abed9a5c19a6dfc70a6b92fcc1193f4b79f39808c7103957c6"
+    },
+    {
+      "path": "sql/03_create_movies.sql",
+      "bytes": 777,
+      "sha256": "0880415562bdc755e4ef2e860e3817135bda29cc1d442b85e7e725afd1a79233"
+    },
+    {
+      "path": "sql/04_create_fulltext_index.sql",
+      "bytes": 77,
+      "sha256": "a269a29a022ce0e3e6cb2d35017918056474fe5aac02935f008183209837cfad"
+    },
+    {
+      "path": "sql/05_add_embedding_columns.sql",
+      "bytes": 149,
+      "sha256": "48cf8e451db207af7a9c1da226b7f8c92a91844077e63e9b9cf66cca04a4fb64"
+    },
+    {
+      "path": "sql/05_create_vector_index.sql",
+      "bytes": 100,
+      "sha256": "671ea019c61b6590c5391313c35caa520ecf42c9469ce1fade5426ea563749f1"
+    },
+    {
+      "path": "start_workshop.bat",
+      "bytes": 2526,
+      "sha256": "5a926095b42aecd4158d427c26e898ac18cd2f8445a083916bba6f0b6f5fed7c"
+    },
+    {
+      "path": "start_workshop.command",
+      "bytes": 814,
+      "sha256": "4dfc48c9e23dee96acd8ef710161fc781ee0906b5d14e892c0c3b35a71e214ca"
+    },
+    {
+      "path": "start_workshop.sh",
+      "bytes": 813,
+      "sha256": "01a8c3258e637ea156aa09cd412c67977e40bba3002a09187c3b04ac9edac21d"
+    },
+    {
+      "path": "stop_workshop.bat",
+      "bytes": 708,
+      "sha256": "fa7a884304f80c4c30a598c2a7f4ecfefd2602786145be1dc48b1dd1dc7bbd76"
+    },
+    {
+      "path": "stop_workshop.command",
+      "bytes": 156,
+      "sha256": "e1f9f5990515aab22ab022b30553121d165be23a9e6f05069c17aab7312d50a1"
+    },
+    {
+      "path": "stop_workshop.sh",
+      "bytes": 169,
+      "sha256": "637b9266c10af22319197a2b0310524e4709d1ce6dbf6db255e9cb4e022ca6ab"
+    },
+    {
+      "path": "wheels/README.md",
+      "bytes": 508,
+      "sha256": "32cc4e564a192b1415b2abdef1cdf908e888f3e89012fe7b69476c4c4b9626d2"
+    },
+    {
+      "path": "wheels/SOURCE.json",
+      "bytes": 1483,
+      "sha256": "48381dd3f064b4b6d9dea89472a17520f6bd5528bf9146453ede438965cb24bc"
+    },
+    {
+      "path": "wheels/pyyaml-6.0.3-cp315-cp315-win_amd64.whl",
+      "bytes": 45189,
+      "sha256": "0a30d843b53c14dd3dbdc5a868f638ce03414a1717b2c79d5fc0bb042566c9d9"
+    },
+    {
+      "path": "wheels/zstandard-0.25.0-cp315-cp315-win_amd64.whl",
+      "bytes": 513617,
+      "sha256": "9a967d7a86f655fb90ed43e39e4d1c998f087f3b7bae4a9d48ed9d6f2d2c2c9d"
+    }
+  ],
+  "bootstrap_validation": {
+    "Linux x86_64 CPython 3.13.11": {
+      "regression_tests": 3,
+      "launcher_http_status": 200
+    },
+    "macOS arm64 CPython 3.12": {
+      "regression_tests": 3
+    }
+  },
+  "listen_address": "0.0.0.0",
+  "listener_validation": {
+    "jupyter": {
+      "pid": 3069878,
+      "listeners": [
+        {
+          "address": "0.0.0.0",
+          "port": 8888
+        }
+      ],
+      "http_status": 200
+    },
+    "streamlit_test": {
+      "listeners": [
+        {
+          "address": "0.0.0.0",
+          "port": 8503
+        }
+      ],
+      "http_status": 200,
+      "stopped_after_test": true
+    }
+  },
+  "windows_launcher_validation": {
+    "python": "3.15.2",
+    "unit_tests": 15,
+    "old_failure_reproduced": true,
+    "missing_runtime_hresult": "0xA0000004",
+    "bootstrap_cases": [
+      {
+        "scenario": "fresh",
+        "python": "3.15.2",
+        "passed": true,
+        "seconds": 28.799,
+        "py312_not_called": true,
+        "second_launch_reused_environment": true
+      },
+      {
+        "scenario": "missing-config",
+        "python": "3.15.2",
+        "passed": true,
+        "seconds": 23.28,
+        "py312_not_called": true,
+        "second_launch_reused_environment": true
+      },
+      {
+        "scenario": "uninstalled-python312",
+        "python": "3.15.2",
+        "passed": true,
+        "seconds": 23.138,
+        "py312_not_called": true,
+        "second_launch_reused_environment": true
+      },
+      {
+        "scenario": "incomplete-install",
+        "python": "3.15.2",
+        "passed": true,
+        "seconds": 21.252,
+        "py312_not_called": true,
+        "second_launch_reused_environment": true
+      }
+    ]
+  }
+}

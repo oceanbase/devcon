@@ -1,0 +1,141 @@
+{
+  "source": "TMDB",
+  "language": "zh-CN",
+  "simplification": "OpenCC t2s",
+  "generated_at": "2026-11-11T10:26:02.921304+00:00",
+  "as_of": "2026-11-11",
+  "requested_count": 500,
+  "movie_count": 500,
+  "preserved_movie_count": 100,
+  "added_movie_count": 400,
+  "preserved_dataset_sha256": "4d1732571b2bc0e0dd0df4329c13a93ebf918565e03e1f062b30ed22972dc652",
+  "collection_policy": "保留原示范片；按题材下限补选，再轮流补齐题材与地区名额。",
+  "china_region_count": 250,
+  "other_region_count": 250,
+  "country_counts": {
+    "CN": 178,
+    "HK": 133,
+    "GB": 50,
+    "US": 277,
+    "FR": 21,
+    "CA": 5,
+    "DE": 9,
+    "JP": 14,
+    "IN": 4,
+    "CZ": 2,
+    "TH": 7,
+    "TW": 31,
+    "NZ": 4,
+    "AU": 6,
+    "KR": 10,
+    "SE": 1,
+    "ZA": 2,
+    "IS": 1,
+    "ES": 2,
+    "BR": 1,
+    "IT": 4,
+    "KH": 1,
+    "MY": 1,
+    "NL": 1,
+    "AT": 1,
+    "YU": 1,
+    "BM": 1,
+    "LU": 1,
+    "TR": 1
+  },
+  "genre_counts": {
+    "科幻": 82,
+    "动作": 212,
+    "剧情": 209,
+    "喜剧": 144,
+    "犯罪": 104,
+    "奇幻": 127,
+    "惊悚": 94,
+    "冒险": 175,
+    "爱情": 84,
+    "悬疑": 81,
+    "动画": 85,
+    "家庭": 88,
+    "战争": 13,
+    "历史": 23,
+    "西部": 3,
+    "恐怖": 20,
+    "音乐": 6
+  },
+  "genre_floor_checks": [
+    {
+      "genres": [
+        "犯罪",
+        "悬疑"
+      ],
+      "minimum": 30,
+      "actual": 35
+    },
+    {
+      "genres": [
+        "悬疑"
+      ],
+      "minimum": 60,
+      "actual": 81
+    },
+    {
+      "genres": [
+        "动画"
+      ],
+      "minimum": 60,
+      "actual": 85
+    },
+    {
+      "genres": [
+        "家庭"
+      ],
+      "minimum": 60,
+      "actual": 88
+    },
+    {
+      "genres": [
+        "爱情"
+      ],
+      "minimum": 60,
+      "actual": 84
+    },
+    {
+      "genres": [
+        "科幻"
+      ],
+      "minimum": 60,
+      "actual": 82
+    },
+    {
+      "genres": [
+        "喜剧"
+      ],
+      "minimum": 90,
+      "actual": 144
+    },
+    {
+      "genres": [
+        "剧情"
+      ],
+      "minimum": 150,
+      "actual": 209
+    },
+    {
+      "genres": [
+        "奇幻"
+      ],
+      "minimum": 50,
+      "actual": 127
+    }
+  ],
+  "year_range": [
+    1960,
+    2026
+  ],
+  "minimum_overview_han": 40,
+  "skipped": {
+    "缺少足够的中文片名或简介": 8
+  },
+  "network_requests": 471,
+  "cache_hits": 0
+}

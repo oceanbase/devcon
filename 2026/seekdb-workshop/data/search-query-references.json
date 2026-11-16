@@ -1,0 +1,95 @@
+{
+  "dataset_sha256": "be9923fe9b7e49b95f28be3f1953c6b3c883a9b4ff8317934aa8658ac2684691",
+  "policy": "类型符合度仅按电影 genres 字段统计，不等于主题、氛围或多项偏好的整体准确率。前八条不指定目标影片；剧情找片名的两条才核对已知目标。",
+  "annotation_author": "source_genre_rules_and_two_plot_targets",
+  "cases": {
+    "crime-mystery": {
+      "genre_rule": {
+        "any": [
+          "犯罪",
+          "悬疑"
+        ]
+      },
+      "references": []
+    },
+    "science-fiction": {
+      "genre_rule": {
+        "all": [
+          "科幻"
+        ]
+      },
+      "references": []
+    },
+    "action-comedy": {
+      "genre_rule": {
+        "all": [
+          "喜剧",
+          "动作"
+        ]
+      },
+      "references": []
+    },
+    "family-drama": {
+      "genre_rule": {
+        "all": [
+          "剧情"
+        ]
+      },
+      "references": []
+    },
+    "growth": {
+      "genre_rule": {
+        "all": [
+          "剧情"
+        ]
+      },
+      "references": []
+    },
+    "fantasy-adventure": {
+      "genre_rule": {
+        "all": [
+          "奇幻",
+          "冒险"
+        ]
+      },
+      "references": []
+    },
+    "romance": {
+      "genre_rule": {
+        "all": [
+          "爱情"
+        ]
+      },
+      "references": []
+    },
+    "animation": {
+      "genre_rule": {
+        "all": [
+          "动画"
+        ]
+      },
+      "references": []
+    },
+    "animal-detective": {
+      "references": [
+        {
+          "id": "tmdb:269149",
+          "title": "疯狂动物城",
+          "grade": 2,
+          "reason": "兔子警官与狐狸合作追查失踪案"
+        }
+      ]
+    },
+    "train": {
+      "references": [
+        {
+          "id": "tmdb:45612",
+          "title": "源代码",
+          "grade": 2,
+          "reason": "重复列车爆炸前八分钟查找凶手"
+        }
+      ]
+    }
+  },
+  "dataset_update": "保留原有两条剧情目标与类型规则；类型规则在扩充后的全库上重新统计。"
+}

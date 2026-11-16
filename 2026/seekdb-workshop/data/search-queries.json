@@ -1,0 +1,62 @@
+[
+  {
+    "id": "crime-mystery",
+    "kind": "discovery",
+    "label": "犯罪悬疑",
+    "text": "找部犯罪悬疑片，能跟着查案、琢磨人物心思的那种。"
+  },
+  {
+    "id": "science-fiction",
+    "kind": "discovery",
+    "label": "科幻",
+    "text": "科幻片有什么推荐？太空、未来科技、人工智能这些都行。"
+  },
+  {
+    "id": "action-comedy",
+    "kind": "discovery",
+    "label": "动作喜剧",
+    "text": "来部轻松好笑、还有点动作戏的喜剧。"
+  },
+  {
+    "id": "family-drama",
+    "kind": "discovery",
+    "label": "家庭剧情",
+    "text": "找几部讲家里人相处、过日子的剧情片。"
+  },
+  {
+    "id": "growth",
+    "kind": "discovery",
+    "label": "成长剧情",
+    "text": "有没有讲成长、追梦想和人生选择的剧情片？"
+  },
+  {
+    "id": "fantasy-adventure",
+    "kind": "discovery",
+    "label": "奇幻冒险",
+    "text": "推荐几部奇幻冒险片吧。"
+  },
+  {
+    "id": "romance",
+    "kind": "discovery",
+    "label": "生活爱情",
+    "text": "爱情片有推荐吗？贴近生活一点的。"
+  },
+  {
+    "id": "animation",
+    "kind": "discovery",
+    "label": "动画",
+    "text": "动画片有什么推荐？讲友情、合作和成长的那种。"
+  },
+  {
+    "id": "animal-detective",
+    "kind": "plot_lookup",
+    "label": "剧情找片：动物探案",
+    "text": "一只兔子梦想当警察，和狐狸搭档调查动物失踪案件"
+  },
+  {
+    "id": "train",
+    "kind": "plot_lookup",
+    "label": "剧情找片：列车危机",
+    "text": "一次次回到列车爆炸前的几分钟，找出制造袭击的凶手"
+  }
+]
